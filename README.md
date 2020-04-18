@@ -3,7 +3,7 @@ UCSB CS263 Project for Spring 2020 Quarter
 
 # Member
 * Yuke Wang
-* Sirus Zhang
+* Sirius Zhang
 
 # Timeline 
 - [ ] **4/20** before 9am **[Project Vision Statement](https://docs.google.com/document/d/18AirkZSKz2w8TKl34t-w3aCTzGhYfbj87K1c0o_LhVQ/edit?usp=sharing)** Due (Initial Survey week)
