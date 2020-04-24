@@ -24,3 +24,16 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + Add 3 graph processing tools to `graph-tools/`, `prof_tools/`. 
 > + Add `4-23-sv.md` to `surveys/`. 
 > + Setup `Doxyfile` for `Doxygen`.
+
+# To-Dos
+- [ ] numba survey
+- [ ] survey on different python profiling tools
+- [ ] survey and study on cuda profiling tools
+- [ ] create our own python graph library
+- [ ] decide the API names of our own python graph library
+- [ ] implement the sparse matrix multiply CPU-only implementation
+- [ ] implement the sparse matrix multiply GPU kernel
+- [ ] implement the scatter and gatther CPU-only implementation
+- [ ] implement the scatter and gatther GPU kernel
+- [ ] design the heuristic function on kernal switching
+
