@@ -17,3 +17,10 @@ UCSB CS263 Project for Spring 2020 Quarter
 - [ ] **6/01**  6/3 in class presentation dates
 - [ ] **6/05**  Github Friday 5 pm week 10 (Documentation and report week)
 - [ ] **6/08**  project report due
+
+
+# Progress Logs
+* **4/24**: 
+> + Add 3 graph processing tools to `graph-tools/`, `prof_tools/`. 
+> + Add `4-23-sv.md` to `surveys/`. 
+> + Setup `Doxyfile` for `Doxygen`.
