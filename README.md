@@ -24,3 +24,7 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + Add 3 graph processing tools to `graph-tools/`, `prof_tools/`. 
 > + Add `4-23-sv.md` to `surveys/`. 
 > + Setup `Doxyfile` for `Doxygen`.
+
+* **5/1**:
+> + Add `0_el2csr.py` to convert plaintext edgelist graphs to CSR format stored as binary.
+> + Add `4_metis.py`, `5_cluster_statis.py` and `6_gen_new_order-metis.py` to `graph-tools/` for graph clustering and node reordering. Node reordering aims to improve the cache performance and memory efficiency by assigning a set of nodes with strong interconnections (edges) with consecutive IDs.  
