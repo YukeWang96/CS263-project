@@ -10,7 +10,7 @@ UCSB CS263 Project for Spring 2020 Quarter
 - [x] **4/24** Github Friday 5 pm week 4 (**Survey week**, **document findings**, **further narrow down vision statement, decide on what to implement/code**)
 - [x] **5/01**  Github Friday 5 pm week 5 (coding / implementation week 1)
 - [x] **5/08**  Github Friday 5 pm week 6 (coding / implementation week 2)
-- [ ] **5/15** Github Friday 5 pm week 7 (coding / implementation week 3)
+- [x] **5/15** Github Friday 5 pm week 7 (coding / implementation week 3)
 - [ ] **5/22** Github Friday 5 pm week 8 (profiling + Empirical evaluation, possibly across multiple frameworks week)
 - [ ] **5/27** in class presentation (do we want to sign up for the 1 presentation day? Depending on our progress)
 - [ ] **5/29** Github Friday 5 pm week 9 (Empirical evaluation + presentation preparation week)
@@ -47,3 +47,6 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + Add `01_metrics.py` to `prof-tools` for CUDA-related detailed profiling
 > + Add `02_memory_latency.py` to `prof-tools` for evaluting memory access overhead.
 
+* **5/15**:
+> + Add `graph.hpp` (**graph definition**) and `virtual_graph.hpp` (**group-based workload**) to `src/common`.
+> + Add `gcn.cu` (**2-layer GCN**)and `gnn.hpp` (**aggregation kernel**) to `src/kernel`. 

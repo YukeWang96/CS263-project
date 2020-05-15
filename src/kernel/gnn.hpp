@@ -1,10 +1,10 @@
-#include "../shared/timer.hpp"
-#include "../shared/tigr_utilities.hpp"
-#include "../shared/graph.hpp"
-#include "../shared/virtual_graph.hpp"
-#include "../shared/globals.hpp"
-#include "../shared/argument_parsing.hpp"
-#include "../shared/gpu_error_check.cuh"
+// #include "../common/timer.hpp"
+// #include "../common/tigr_utilities.hpp"
+// #include "../common/graph.hpp"
+// #include "../common/virtual_graph.hpp"
+// #include "../common/globals.hpp"
+// #include "../common/argument_parsing.hpp"
+// #include "../common/gpu_error_check.cuh"
 
 #define OPT 3
 // #define using_shared
