@@ -26,11 +26,11 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + Setup `Doxyfile` for `Doxygen`.
 
 * **TODO**
-> - [ ] numba survey
-> - [ ] survey on different python profiling tools
-> - [ ] survey and study on cuda profiling tools
-> - [ ] create our own python graph library
-> - [ ] decide the API names of our own python graph library
+> - [x] numba survey
+> - [x] survey on different python profiling tools
+> - [x] survey and study on cuda profiling tools
+> - [x] create our own python graph library
+> - [x] decide the API names of our own python graph library
 > - [ ] implement the sparse matrix multiply CPU-only implementation
 > - [ ] implement the sparse matrix multiply GPU kernel
 > - [ ] implement the scatter and gatther CPU-only implementation
