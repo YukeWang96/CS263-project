@@ -11,7 +11,7 @@ UCSB CS263 Project for Spring 2020 Quarter
 - [x] **5/01**  Github Friday 5 pm week 5 (coding / implementation week 1)
 - [x] **5/08**  Github Friday 5 pm week 6 (coding / implementation week 2)
 - [x] **5/15** Github Friday 5 pm week 7 (coding / implementation week 3)
-- [ ] **5/22** Github Friday 5 pm week 8 (profiling + Empirical evaluation, possibly across multiple frameworks week)
+- [x] **5/22** Github Friday 5 pm week 8 (profiling + Empirical evaluation, possibly across multiple frameworks week)
 - [ ] **5/27** in class presentation (do we want to sign up for the 1 presentation day? Depending on our progress)
 - [ ] **5/29** Github Friday 5 pm week 9 (Empirical evaluation + presentation preparation week)
 - [ ] **6/01**  6/3 in class presentation dates
@@ -32,9 +32,9 @@ UCSB CS263 Project for Spring 2020 Quarter
 > - [x] create our own python graph library
 > - [x] decide the API names of our own python graph library
 > - [ ] implement the sparse matrix multiply CPU-only implementation
-> - [ ] implement the sparse matrix multiply GPU kernel
+> - [x] implement the sparse matrix multiply GPU kernel
 > - [ ] implement the scatter and gatther CPU-only implementation
-> - [ ] implement the scatter and gatther GPU kernel
+> - [x] implement the scatter and gatther GPU kernel
 > - [ ] design the heuristic function on kernal switching
 
 * **5/1**:
@@ -50,3 +50,8 @@ UCSB CS263 Project for Spring 2020 Quarter
 * **5/15**:
 > + Add `graph.hpp` (**graph definition**) and `virtual_graph.hpp` (**group-based workload**) to `src/common`.
 > + Add `gcn.cu` (**2-layer GCN**)and `gnn.hpp` (**aggregation kernel**) to `src/kernel`. 
+
+* **5/22**:
+> + Add `globals.hpp`, `graph.cpp` and `virtual_graph.cpp` for graph kernel implementation.
+> + Add `Makefile` to `common` directory.
+> + Finish the initial evaluation for GCN.
