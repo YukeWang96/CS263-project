@@ -31,11 +31,10 @@ UCSB CS263 Project for Spring 2020 Quarter
 > - [x] survey and study on cuda profiling tools
 > - [x] create our own python graph library
 > - [x] decide the API names of our own python graph library
-> - [ ] implement the sparse matrix multiply CPU-only implementation
+> - [x] implement the sparse matrix multiply CPU-only implementation
 > - [x] implement the sparse matrix multiply GPU kernel
-> - [ ] implement the scatter and gatther CPU-only implementation
+> - [x] implement the scatter and gatther CPU-only implementation
 > - [x] implement the scatter and gatther GPU kernel
-> - [ ] design the heuristic function on kernal switching
 
 * **5/1**:
 > + Add `0_el2csr.py` to convert plaintext edgelist graphs to CSR format stored as binary.
@@ -55,3 +54,7 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + Add `globals.hpp`, `graph.cpp` and `virtual_graph.cpp` for graph kernel implementation.
 > + Add `Makefile` to `common` directory.
 > + Finish the initial evaluation for GCN.
+
+* **5/29**:
+> + Add `gcn.cu` for SpMM-based GCN kernel.
+> + Add `edgelist_to_csr` for graph-preprocessing tools.
