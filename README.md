@@ -12,9 +12,8 @@ UCSB CS263 Project for Spring 2020 Quarter
 - [x] **5/08**  Github Friday 5 pm week 6 (coding / implementation week 2)
 - [x] **5/15** Github Friday 5 pm week 7 (coding / implementation week 3)
 - [x] **5/22** Github Friday 5 pm week 8 (profiling + Empirical evaluation, possibly across multiple frameworks week)
-- [ ] **5/27** in class presentation (do we want to sign up for the 1 presentation day? Depending on our progress)
-- [ ] **5/29** Github Friday 5 pm week 9 (Empirical evaluation + presentation preparation week)
-- [ ] **6/01**  6/3 in class presentation dates
+- [x] **5/29** Github Friday 5 pm week 9 (Empirical evaluation + presentation preparation week)
+- [ ] **6/03**  6/3 in class presentation dates
 - [ ] **6/05**  Github Friday 5 pm week 10 (Documentation and report week)
 - [ ] **6/08**  project report due
 
