@@ -1,0 +1,8 @@
+setup.py
+_ext_src/src/bindings.cpp
+_ext_src/src/gcn_sag.cpp
+_ext_src/src/gcn_sag_gpu.cu
+custom_kernel.egg-info/PKG-INFO
+custom_kernel.egg-info/SOURCES.txt
+custom_kernel.egg-info/dependency_links.txt
+custom_kernel.egg-info/top_level.txt
