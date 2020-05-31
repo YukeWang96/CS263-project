@@ -5,6 +5,7 @@ from graph import graph
 import torch.nn.functional as F
 from graph import graph
 from virtual_graph import vgraph
+from model import GCN
 from model import *
 
 parser = argparse.ArgumentParser(description='GNN Pytorch')
@@ -28,8 +29,7 @@ def toTorchTensor(virtual_graph, gpu=False):
     numNodes = torch.IntTensor(virtual_graph.n_nodes)
     groupNodePointer = torch.from_numpy(virtual_graph.groupNodePointer)
     edgeList = torch.from_numpy(virtual_graph.edgeList)
-    embed1 = torch.zeros((virtual_graph.n_nodes, args.feature))
-    embed2 = torch.rand(virtual_graph.n_nodes, args.feature)
+    embed = torch.rand(virtual_graph.n_nodes, args.feature)
 
     if gpu:
         numGroups.cuda()
@@ -38,8 +38,9 @@ def toTorchTensor(virtual_graph, gpu=False):
         numNodes.cuda()
         groupNodePointer.cuda()
         edgeList.cuda()
-        embed1.cuda()
-        embed2.cuda()
+        embed.cuda()
+    
+    return (numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed)
 
 
 if __name__ == "__main__":
@@ -51,6 +52,8 @@ if __name__ == "__main__":
     vG.make_vgraph()
     vG.print_vgraph()
 
-    toTorchTensor(vG)
+    graph_obj = toTorchTensor(vG)
     print("Finished!")
-    
+
+    gcn = GCN(args.feature, args.hidden, args.classes)
+    gcn.forward(graph_obj)
