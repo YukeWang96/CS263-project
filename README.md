@@ -57,3 +57,18 @@ UCSB CS263 Project for Spring 2020 Quarter
 * **5/29**:
 > + Add `gcn.cu` for SpMM-based GCN kernel.
 > + Add `edgelist_to_csr` for graph-preprocessing tools.
+
+
+```
+cd Docker
+
+docker build -t cs263_project --build-arg IMAGE_NAME=nvidia/cuda .
+
+docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/Desktop/cs263_project/CS263-project:/app cs263_project
+
+cd pytorch/custom_kernel
+python setup.py install
+
+python test.py
+
+```
