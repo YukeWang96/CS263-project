@@ -3,6 +3,7 @@ import torch.nn as nn
 import argparse
 import numpy as np
 import torch.nn.functional as F
+import time
 
 from graph import graph
 from virtual_graph import vgraph
@@ -60,6 +61,7 @@ def toTorchTensor_spMM(graph_path, gpu=False):
 if __name__ == "__main__":
 
     if args.kernel == "SAG":
+        start = time.perf_counter()
         G = graph()
         G.read_graph_files(args.graph_path)
         # G.gen_graph_embedding(args.feature)
@@ -76,7 +78,13 @@ if __name__ == "__main__":
             edgeList = edgeList.cuda()
             embed = embed.cuda()
 
+        end1 = time.perf_counter()
         gcn(numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed)
+        end2 = time.perf_counter()
+        overall = end2 - start
+        cpu_side = (end1 - start)/overall * 100
+        mode_side = (end2 - end1)/overall * 100
+        print("Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
     else:
         graph_coo, embed = toTorchTensor_spMM(args.graph_path, args.gpu)
         gcn_spmm = GCN_spMM(args.feature, args.hidden, args.classes)

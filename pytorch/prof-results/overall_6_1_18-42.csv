@@ -1,0 +1,4 @@
+Filename, Mem(ms), Compute(ms)
+artist_edges.csv, 4.228138, 31.725535
+com-amazon.csv, 16.079108, 44.990949
+web-BerkStan.csv, 46.476205, 421.911555

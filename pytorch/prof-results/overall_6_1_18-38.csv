@@ -1,0 +1,7 @@
+Filename, Mem(ms), Compute(ms)
+PROTEINS_full.csv, 0.704129, 4.119202
+OVCAR-8H.csv, 59.726678, 131.704154
+SW-620H.csv, 59.320080, 133.790531
+Yeast.csv, 59.591215, 122.123585
+DD.csv, 14.900086, 39.627227
+TWITTER-Real-Graph-Partial.csv, 329.432067, 49.500347

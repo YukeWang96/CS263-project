@@ -61,6 +61,9 @@ UCSB CS263 Project for Spring 2020 Quarter
 * **5/31**:
 > + Wrap the GCN kernel for Pytorch.
 > + Add the Docker
+
+# Step-1
+## Start Docker
 >> + ```cd Docker``` <br>
 >>+ ```docker build -t cs263_project --build-arg IMAGE_NAME=nvidia/cuda . ```  <br>
 >> + ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/CS263-project:/app -v PATH-TO-GRAPH-FOLDER:/graphs cs263_project``` <br>
@@ -68,8 +71,9 @@ UCSB CS263 Project for Spring 2020 Quarter
 <!-- >> + ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/cs263-sirius:/app -v ~/.graphs/orig:/graphs cs263_project``` <br> -->
 >> + ```cd pytorch/custom_kernel``` <br>
 >> + ```python setup.py install``` <br>
->> + ```./run-bench.py``` <br>
+>> + ```python test.py``` <br>
 
+# Step-2
 **Standalone Mode** 
 > * For running a single graph.
 >> **```python custom_kernel/main.py```** <br>
@@ -79,6 +83,7 @@ UCSB CS263 Project for Spring 2020 Quarter
 >> ```--kernel``` GNN kernel: SAG (default), and SpMM <br>
 >> ```--gpu:``` set if use GPU, otherwise CPU.
 
+# Step-3
 **Benchmark Mode**
 > * For running several graphs.
 >>  **```./run-bench.py```** <br>

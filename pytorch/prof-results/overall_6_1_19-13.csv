@@ -1,0 +1,13 @@
+Filename, Mem(ms), Compute(ms)
+citeseer.csv, 5.299681, 0.601664
+cora.csv, 1.685057, 0.373088
+pubmed.csv, 4.284577, 2.379681
+PROTEINS_full.csv, 0.711072, 4.131170
+OVCAR-8H.csv, 58.947275, 132.631711
+Yeast.csv, 59.999621, 122.084073
+DD.csv, 15.165748, 39.589140
+TWITTER-Real-Graph-Partial.csv, 326.717541, 49.482099
+SW-620H.csv, 59.860262, 133.830731
+artist_edges.csv, 4.218441, 31.721037
+com-amazon.csv, 16.248011, 45.014584
+web-BerkStan.csv, 46.816334, 420.463097

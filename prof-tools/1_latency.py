@@ -4,34 +4,36 @@ import sys
 import os
 
 graphs = [
-        ('toy'	        , 3703	    , 6   ),  
         ('citeseer'	        , 3703	    , 6   ),  
         ('cora' 	        , 1433	    , 7   ),  
         ('pubmed'	        , 500	    , 3   ),      
-        ('ppi'	            , 50	    , 121 ),   
+        # ('ppi'	            , 50	    , 121 ), 
 
-        ('ENZYMES'                   , 18       , 6) ,
+        # ('toy',         100,            10),
+        # ('ENZYMES'                   , 18       , 6) ,
         ('PROTEINS_full'             , 29       , 2) ,   
-        ('YeastH'                    , 75       , 2) ,   
         ('OVCAR-8H'                  , 66       , 2) ,   
-        ('SW-620H'                   , 66       , 2) ,
         ('Yeast'                     , 74       , 2) ,
         ('DD'                        , 89       , 2) ,
-        ('COLLAB'                    , 100      , 3) ,
         ('TWITTER-Real-Graph-Partial', 1323     , 2) ,   
+        ('SW-620H'                   , 66       , 2) ,
+        # ('YeastH'                    , 75       , 2) ,   
+        # ('COLLAB'                    , 100      , 3) ,
 
-        ( 'Reddit'                   , 602    , 41),
-        ( 'amazon0505'               , 96	  , 22),
-        ( 'artist_edges'             , 100	  , 12),
-        ( 'com-amazon'               , 96	  , 22),
-        ( 'web-BerkStan'             , 100	  , 12),
-        ( 'wiki-topcats'             , 300	  , 12),
-        ( 'soc-BlogCatalog'	         , 128	  , 39),      
-        ( 'amazon0601'  	         , 96	  , 22), 
-        
-        ( 'Reddit'                   , 602    , 41),
-        ( 'enwiki-2013'	             , 100	  , 12),      
-        ( 'amazon_also_bought'       , 96     , 22),
+        # ( 'Reddit'                   , 602    , 41	),
+        # ( 'amazon0505'               , 96	  , 22	),
+        ( 'artist_edges'             , 100	  , 12	),
+        ( 'com-amazon'               , 96	  , 22	),
+        ( 'web-BerkStan'             , 100	  , 12	),
+        # ( 'wiki-topcats'             , 300	  , 12	),
+        # ( 'soc-BlogCatalog'	         , 128	  , 39  ),      
+        # ( 'NELL'	                 , 5414	  , 210 ),      
+        # ('amazon0601'  	    , 96	    , 22  ), 
+     
+        # ('ms_academic'	    , 500	    , 25  ),  
+		# ('enwiki-2013'	           , 100	, 12),
+        # ( 'amazon_also_bought'       , 96     , 22),
+        # ( 'amazon_also_viewed'       , 96     , 22),  
 ] 
 
 

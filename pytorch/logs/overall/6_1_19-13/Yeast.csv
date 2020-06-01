@@ -1,0 +1,26 @@
+==484== NVPROF is profiling process 484, command: python custom_kernel/main.py --graph_path /graphs/Yeast --feature 74 --hidden 16 --classes 2 --kernel SAG --gpu
+==484== Warning: Profiling results might be incorrect with current version of nvcc compiler used to compile cuda app. Compile with nvcc compiler 9.0 or later version to get correct profiling results. Ignore this warning if code is already compiled with the recommended nvcc version 
+==484== Profiling application: python custom_kernel/main.py --graph_path /graphs/Yeast --feature 74 --hidden 16 --classes 2 --kernel SAG --gpu
+==484== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+s,ms,,,,,,,,KB,B,MB,GB/s,,,,,,,
+2.557074,0.001056,,,,,,,,,,0.004517,4.176841,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",135
+2.557152,0.000608,,,,,,,,,,0.000061,0.098034,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",147
+2.557191,0.000704,,,,,,,,,,0.000977,1.354651,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",159
+2.557211,0.000800,,,,,,,,,,0.000061,0.074506,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",171
+2.557236,0.000608,,,,,,,,,,0.000122,0.196068,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",183
+2.557254,0.000576,,,,,,,,,,0.000008,0.012935,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",195
+2.557474,0.701793,,,,,,,,,,6.526573,9.081890,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",208
+2.558410,3.187716,,,,,,,,,,27.744644,8.499621,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",221
+2.562544,2.308195,,,,,,,,,,20.398895,8.630465,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",234
+2.565981,53.795709,,,,,,,,,,482.966415,8.767370,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",247
+2.632197,0.907457,53466,1,1,512,1,1,11,0.000000,0,,,,,"GeForce GTX 1070 (0)","1","7","_ZN2at4cuda75_GLOBAL__N__51_tmpxft_0000040b_00000000_11_Copy_compute_75_cpp1_ii_dd3fb9a321kernelPointwiseApply2IZN75_GLOBAL__N__51_tmpxft_0000040b_00000000_11_Copy_compute_75_cpp1_ii_dd3fb9a36CopyOpIffE5applyERNS_6TensorERKS6_EUlRfRKfE_ffjLi1ELi2ELi1EEEvNS0_6detail10TensorInfoIT0_T2_EENSF_IT1_SH_EESH_T_",260
+2.848468,0.000864,,,,,,,,,,0.000107,0.120727,"Pageable","Device","GeForce GTX 1070 (0)","1","7","[CUDA memcpy HtoD]",379
+2.848701,5.018309,3,1,17822,128,1,1,153,16.515625,0,,,,,"GeForce GTX 1070 (0)","1","7","sgemm_32x32x32_NT",399
+2.853721,0.000992,,,,,,,,,,104.425171,102800.106810,"Device",,"GeForce GTX 1070 (0)","1","7","[CUDA memset]",411
+2.856414,99.452784,5347448,1,1,1024,1,1,32,0.000000,0,,,,,"GeForce GTX 1070 (0)","1","7","gcn_sag_forward_cuda(unsigned int, int*, unsigned int, unsigned int, int*, int*, float*, float*)",416
+2.955868,1.191874,53466,1,1,512,1,1,8,0.000000,0,,,,,"GeForce GTX 1070 (0)","1","7","_ZN2at6native18elementwise_kernelILi512ELi1EZNS0_17gpu_binary_kernelIZNS0_21threshold_kernel_implIfEEvRNS_14TensorIteratorET_S6_EUlffE_EEvS5_RKS6_EUliE_EEviT1_",429
+2.957061,0.115104,6684,1,1,512,1,1,11,0.000000,0,,,,,"GeForce GTX 1070 (0)","1","7","_ZN2at4cuda75_GLOBAL__N__51_tmpxft_0000040b_00000000_11_Copy_compute_75_cpp1_ii_dd3fb9a321kernelPointwiseApply2IZN75_GLOBAL__N__51_tmpxft_0000040b_00000000_11_Copy_compute_75_cpp1_ii_dd3fb9a36CopyOpIffE5applyERNS_6TensorERKS6_EUlRfRKfE_ffjLi1ELi2ELi1EEEvNS0_6detail10TensorInfoIT0_T2_EENSF_IT1_SH_EESH_T_",442
+2.957177,3.079299,3,1,17822,128,1,1,153,16.515625,0,,,,,"GeForce GTX 1070 (0)","1","7","sgemm_32x32x32_NT_vec",448
+2.960257,0.150464,6684,1,1,512,1,1,8,0.000000,0,,,,,"GeForce GTX 1070 (0)","1","7","_ZN2at6native18elementwise_kernelILi512ELi1EZNS0_17gpu_binary_kernelIZNS0_21threshold_kernel_implIfEEvRNS_14TensorIteratorET_S6_EUlffE_EEvS5_RKS6_EUliE_EEviT1_",463
+2.960408,12.168782,1710902,1,1,32,1,1,25,0.000000,128,,,,,"GeForce GTX 1070 (0)","1","7","void at::native::_GLOBAL__N__54_tmpxft_000009ba_00000000_11_SoftMax_compute_75_cpp1_ii_a3310042::cunn_SoftMaxForward<int=2, float, float, float, at::native::_GLOBAL__N__54_tmpxft_000009ba_00000000_11_SoftMax_compute_75_cpp1_ii_a3310042::LogSoftMaxForwardEpilogue>(float*, float*, int)",477
