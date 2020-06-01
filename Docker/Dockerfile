@@ -80,6 +80,7 @@ RUN conda install -y requests=2.19.1 \
 # RUN conda install -y graphviz=2.38.0 \
 #  && conda clean -ya
 RUN pip install graphviz==0.8.4
+RUN conda install pandas=0.20.3
 
 # Install OpenCV3 Python bindings.
 RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \

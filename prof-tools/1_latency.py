@@ -4,6 +4,7 @@ import sys
 import os
 
 graphs = [
+        ('toy'	        , 3703	    , 6   ),  
         ('citeseer'	        , 3703	    , 6   ),  
         ('cora' 	        , 1433	    , 7   ),  
         ('pubmed'	        , 500	    , 3   ),      
@@ -47,7 +48,7 @@ def extrat_time(dir):
 
         # print(fname)
         f.append(fname)
-        curr_csv = pd.read_csv(dir + "/" + fname, header=3)
+        curr_csv = pd.read_csv(dir + "/" + fname, header=4)
         duration = curr_csv.Duration.tolist()
         cuda_type = curr_csv.Name.tolist()
 

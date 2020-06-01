@@ -4,6 +4,7 @@ import sys
 import os
 
 graphs = [
+            ('toy'	        , 3703	    , 6   ),  
         ('citeseer'	        , 3703	    , 6   ),  
         ('cora' 	        , 1433	    , 7   ),  
         ('pubmed'	        , 500	    , 3   ),      

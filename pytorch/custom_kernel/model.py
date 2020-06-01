@@ -47,7 +47,7 @@ class GCN(nn.Module):
         return F.log_softmax(x, dim=-1)
 
 class GCN_spMM(nn.Module):
-    def __init__(self, n_feature, n_hidden, n_class,            n_hidden_layers=1):
+    def __init__(self, n_feature, n_hidden, n_class, n_hidden_layers=1):
         super(GCN_spMM, self).__init__()
         self.n_feature = n_feature
         self.n_hidden = n_hidden

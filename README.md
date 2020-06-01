@@ -63,7 +63,25 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + Add the Docker
 >> + ```cd Docker``` <br>
 >>+ ```docker build -t cs263_project --build-arg IMAGE_NAME=nvidia/cuda . ```  <br>
->> + ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/cs263-sirius:/app -v ~/.graphs:/graphs cs263_project``` <br>
+>> + ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/CS263-project:/app -v PATH-TO-GRAPH-FOLDER:/graphs cs263_project``` <br>
+ 
+<!-- >> + ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/cs263-sirius:/app -v ~/.graphs/orig:/graphs cs263_project``` <br> -->
 >> + ```cd pytorch/custom_kernel``` <br>
 >> + ```python setup.py install``` <br>
->> + ```python test.py``` <br>
+>> + ```./run-bench.py``` <br>
+
+**Standalone Mode** 
+> * For running a single graph.
+>> **```python custom_kernel/main.py```** <br>
+>> ```--graph_path``` absolute path of GNN graph file in [coo format](https://scipy-lectures.org/advanced/scipy_sparse/coo_matrix.html) as **plain text** file. Note that node id must start from 0 and be continuous<br>
+>> ```--feature``` size of feature embedding (default=100)<br>
+>> ```--hidden``` size of hidden dimension of GNN network (default=16) <br>
+>> ```--kernel``` GNN kernel: SAG (default), and SpMM <br>
+>> ```--gpu:``` set if use GPU, otherwise CPU.
+
+**Benchmark Mode**
+> * For running several graphs.
+>>  **```./run-bench.py```** <br>
+>>  ```overall```: **True** if profile overall CUDA kernel runtime(fast), otherwise, profile kernel detailed metrics (slow). <br>
+>> ```hidden```: dimension of GCN hidden layers.<br>
+>> ```data_dir```: absolute path for the graph directory ```default="/graphs/"```

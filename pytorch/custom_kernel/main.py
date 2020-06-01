@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import argparse
 import numpy as np
-from graph import graph
 import torch.nn.functional as F
+
 from graph import graph
 from virtual_graph import vgraph
 from model import GCN, GCN_spMM
@@ -17,7 +17,7 @@ parser.add_argument('--hidden', type=int, default=16,
                     help='size of hidden dimension of GNN network')
 parser.add_argument('--classes', type=int, default=10,
                     help='size of the output classes')
-parser.add_argument('--kernel', type=str, default="SpMM",
+parser.add_argument('--kernel', type=str, default="SAG",
                     help='GNN kernel: SAG (default), SpMM')
 parser.add_argument('--gpu', action='store_true',
                     help='set if use GPU, otherwise CPU')
@@ -53,7 +53,7 @@ def toTorchTensor_spMM(graph_path, gpu=False):
     graph_coo = torch.sparse.FloatTensor(idx, val, torch.Size([n_nodes, n_nodes]))
     embed = torch.rand((n_nodes, args.feature))
 
-    print("#V: {}\t#E: {}".format(n_nodes, len(src)))
+    print("#V:{}\t#E:{}".format(n_nodes, len(src)))
     return graph_coo, embed 
 
 
@@ -75,6 +75,7 @@ if __name__ == "__main__":
             groupNodePointer = groupNodePointer.cuda()
             edgeList = edgeList.cuda()
             embed = embed.cuda()
+
         gcn(numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed)
     else:
         graph_coo, embed = toTorchTensor_spMM(args.graph_path, args.gpu)

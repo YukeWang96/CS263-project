@@ -5,6 +5,9 @@ import os
 
 overall = True
 hidden = 16
+data_dir = "/graphs/" # graph data directory
+# print(data_dir)
+iteration = 1
 
 dataset = [
         ('toy',         100,            10),
@@ -39,25 +42,24 @@ dataset = [
         # ( 'amazon_also_viewed'       , 96     , 22),     
 ]
 
-# x = datetime.datetime.now()
-# result_timestmp= "{}_{}_{}-{}".format(x.month, x.day, x.hour, x.minute, x.second)
-# if not os.path.exists("results/{}".format(result_timestmp)):
-#     os.mkdir("results/{}".format(result_timestmp))
-
-# data_dir = "/home/yuke/.graphs/orig/"
-data_dir = "/graphs/orig/"
-print(data_dir)
 x = datetime.datetime.now()
-day_time = "{}_{}_{}-{}-{}".format(x.month, x.day, x.hour, x.minute, x.second)
+result_timestmp= "{}_{}_{}-{}".format(x.month, 
+                                      x.day, 
+                                      x.hour, 
+                                      x.minute, 
+                                      x.second)
 
-# if overall:
-#     os.system("mv logs/overall/* logs/archived/overall")
-#     if not os.path.exists("logs/overall/{}".format(day_time)):
-#         os.mkdir("logs/overall/{}".format(day_time))
-# else:
-#     os.system("mv logs/metrics/* logs/archived/metrics")
-#     if not os.path.exists("logs/metrics/{}".format(day_time)):
-#         os.mkdir("logs/metrics/{}".format(day_time))
+# if not os.path.exists("prof-results/{}".format(result_timestmp)):
+#     os.mkdir("prof-results/{}".format(result_timestmp))
+
+if overall:
+    # os.system("mv logs/overall/* logs/archived/overall")
+    if not os.path.exists("logs/overall/{}".format(result_timestmp)):
+        os.mkdir("logs/overall/{}".format(result_timestmp))
+else:
+    # os.system("mv logs/metrics/* logs/archived/metrics")
+    if not os.path.exists("logs/metrics/{}".format(result_timestmp)):
+        os.mkdir("logs/metrics/{}".format(result_timestmp))
 
 for data, d, c in dataset:
 
@@ -65,17 +67,17 @@ for data, d, c in dataset:
 
     if overall:
         common = [
-                    # 'nvprof', 
-                    # '--log-file', 
-                    # 'logs/overall/{}/{}.csv'.format(day_time, data), 
-                    # '--csv', '--print-gpu-trace'
+                    'nvprof', 
+                    '--log-file', 
+                    'logs/overall/{}/{}.csv'.format(result_timestmp, data), 
+                    '--csv', '--print-gpu-trace'
                     ]
     else:
         common = [
-                    # 'nvprof', 
-                    # '--metrics', 'all', 
-                    # '--log-file', 'logs/metrics/{}/{}.csv'.format(day_time, data), 
-                    # '--csv', '--print-gpu-trace'
+                    'nvprof', 
+                    '--metrics', 'all', 
+                    '--log-file', 'logs/metrics/{}/{}.csv'.format(result_timestmp, data), 
+                    '--csv', '--print-gpu-trace'
                     ]
     
     sample = [	
@@ -85,12 +87,13 @@ for data, d, c in dataset:
                 '--feature', str(d),
                 '--hidden', str(hidden),
                 '--classes', str(c),
-                # '--kernel', 'SAG',
+                '--kernel', 'SAG',
                 '--gpu'
                 ]
 
     subprocess.run(common + sample)
 
-# if overall:
-#     os.system('./1_latency.py logs/overall/{} {} > results/{}/trans_{}_med_{}.csv'\
-#             .format(day_time, iteration, result_timestmp, trans_val, trans_method))
+if overall:
+    os.system('../prof-tools/1_latency.py logs/overall/{} {} > prof-results/overall_{}.csv'.format(result_timestmp, iteration, result_timestmp))
+else:
+    os.system('../prof-tools/2_metrics.py logs/metrics/{} {} > prof-results/metrics_{}.csv'.format(result_timestmp, iteration, result_timestmp))
