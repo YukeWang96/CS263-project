@@ -14,19 +14,19 @@ dataset = [
         ('cora' 	        , 1433	    , 7   ),  
         ('pubmed'	        , 500	    , 3   ),      
 
-        ('PROTEINS_full'             , 29       , 2) ,   
-        ('OVCAR-8H'                  , 66       , 2) ,   
-        ('Yeast'                     , 74       , 2) ,
-        ('DD'                        , 89       , 2) ,
-        ('TWITTER-Real-Graph-Partial', 1323     , 2) ,   
-        ('SW-620H'                   , 66       , 2) ,
+        # ('PROTEINS_full'             , 29       , 2) ,   
+        # ('OVCAR-8H'                  , 66       , 2) ,   
+        # ('Yeast'                     , 74       , 2) ,
+        # ('DD'                        , 89       , 2) ,
+        # ('TWITTER-Real-Graph-Partial', 1323     , 2) ,   
+        # ('SW-620H'                   , 66       , 2) ,
 
-        ( 'amazon0505'               , 96	  , 22	),
-        ( 'artist_edges'             , 100	  , 12	),
-        ( 'com-amazon'               , 96	  , 22	),
-        ( 'web-BerkStan'             , 100	  , 12	),
-        ( 'wiki-topcats'             , 300	  , 12	),
-        ( 'soc-BlogCatalog'	         , 128	  , 39  ),    
+        # ( 'amazon0505'               , 96	  , 22	),
+        # ( 'artist_edges'             , 100	  , 12	),
+        # ( 'com-amazon'               , 96	  , 22	),
+        # ( 'web-BerkStan'             , 100	  , 12	),
+        # ( 'wiki-topcats'             , 300	  , 12	),
+        # ( 'soc-BlogCatalog'	         , 128	  , 39  ),    
 ]
 
 x = datetime.datetime.now()

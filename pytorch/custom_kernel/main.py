@@ -78,7 +78,7 @@ def SAG_routine(G):
     overall = end2 - start
     cpu_side = (end1 - start)/overall * 100
     mode_side = (end2 - end1)/overall * 100
-    print("Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
+    print("--Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
 
 def SpMM_routine(G):
     graph_coo, embed = toTorchTensor_spMM(G, args.gpu)
@@ -96,7 +96,7 @@ def SpMM_routine(G):
     overall = end2 - start
     cpu_side = (end1 - start)/overall * 100
     mode_side = (end2 - end1)/overall * 100
-    print("Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
+    print("--Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
 
 if __name__ == "__main__":
 
@@ -105,20 +105,18 @@ if __name__ == "__main__":
     G.kernel_choice()
 
     if args.kernel == 'auto':
-        print("AUTO Mode")
-        print("Select [ {} ] Kernel".format(G.kernel))
+        print("--AUTO Select [ {} ] Kernel".format(G.kernel))
     else:
-        print("Manual Mode")
-        print("User Specify [ {} ] Kernel".format(args.kernel))
+        print("--MANUAL Select [ {} ] Kernel".format(args.kernel))
 
-    # if args.kernel == 'auto':
-    #     if G.kernel == "SAG":
-    #         SAG_routine(G)
-    #     else:
-    #         SpMM_routine(G)
-    # else:
-    #     if args.kernel == 'SAG':
-    #         SAG_routine(G)
-    #     else:
-    #         SpMM_routine(G)
+    if args.kernel == 'auto':
+        if G.kernel == "SAG":
+            SAG_routine(G)
+        else:
+            SpMM_routine(G)
+    else:
+        if args.kernel == 'SAG':
+            SAG_routine(G)
+        else:
+            SpMM_routine(G)
     print()

@@ -41,7 +41,7 @@ class graph(object):
         self.n_nodes = len(self.graph_dict)
         self.dim_th = self.n_nodes * self.alpha
 
-        print("#V:{}\t#E:{}".format(self.n_nodes, self.n_edges))
+        print("--#V:{}\t#E:{}".format(self.n_nodes, self.n_edges))
         self.graph_readed_complete = True
 
     def gen_graph_embedding(self, n_features):

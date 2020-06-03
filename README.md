@@ -24,19 +24,23 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + ```pywrapper/```: Other alternative solutions for wrapping c/c++ source for Python.<br>
 > + ```src/```: CUDA kernel source without Pytorch Wrapper. <br>
 > + ```surveys/```: contains the initial surveys of this project. <br>
+> + ```example-graphs/```: contains the initial surveys of this project. <br>
+
 
 ## Step-1
 ### Start Docker
 > 1. ```cd pytorch/``` <br> 
 > 2. ```cd Docker``` <br>
 > 3. ```docker build -t cs263_project --build-arg IMAGE_NAME=nvidia/cuda . ```  <br>
-> 4. ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/CS263-project:/app -v [PATH-TO-GRAPH-FOLDER]:/graphs cs263_project``` <br>
-<!-- >> + ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/cs263-sirius:/app -v ~/.graphs/orig:/graphs cs263_project``` <br> -->
+> 4. ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/CS263-project:/app -v ~/CS263-project/example-graphs/:/graphs cs263_project``` <br>
+<!-- >> + ```docker run --rm -it --init --runtime=nvidia --ipc=host --name cs263_project --user=0 -v ~/cs263-sirius:/app -v ~/cs263-sirius/example-graphs:/graphs cs263_project``` <br> -->
 > 5. ```cd pytorch/custom_kernel``` <br>
 > 6. ```python setup.py install``` <br>
 > 7. ```python test.py # verify installation``` <br>
 
-> **Note: command 3 only need to run if ```cs263_project``` has not been built before. Ohterwise, if ```cs263_project``` docker image already exists, just jump from 2 to 4.** 
+> **Note:** 
+> + **Command 3 only need to run if ```cs263_project``` has not been built before. Ohterwise, if ```cs263_project``` docker image already exists, just jump from 2 to 4.**
+> + **Command 4: ```~/CS263-project``` and ```~/CS263-project/example-graphs/``` should be the absolute path**.
 
 ## Step-2
 ### Standalone Mode -- Single Graph 
