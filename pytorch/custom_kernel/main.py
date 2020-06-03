@@ -19,7 +19,7 @@ parser.add_argument('--hidden', type=int, default=16,
 parser.add_argument('--classes', type=int, default=10,
                     help='size of the output classes')
 parser.add_argument('--kernel', type=str, default="SAG",
-                    help='GNN kernel: SAG (default), SpMM')
+                    help='GNN kernel options: auto (default), SAG, SpMM')
 parser.add_argument('--gpu', action='store_true',
                     help='set if use GPU, otherwise CPU')
 args = parser.parse_args()
@@ -37,16 +37,16 @@ def toTorchTensor(virtual_graph, gpu=False):
     return numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed
 
 
-def toTorchTensor_spMM(graph_path, gpu=False):
-    fp = open(graph_path)
-    src = []
-    trg = []
-    for line in fp:
-        tmp = line.strip('\n').split(" ")
-        a, b = int(tmp[0]), int(tmp[1])
-        src.append(a)
-        trg.append(b)
+def toTorchTensor_spMM(graph, gpu=False):
+    # fp = open(graph_path)
+    # for line in fp:
+    #     tmp = line.strip('\n').split(" ")
+    #     a, b = int(tmp[0]), int(tmp[1])
+    #     src.append(a)
+    #     trg.append(b)
 
+    src = graph.src_li
+    trg = graph.trg_li
     val = torch.ones(len(src))
     n_nodes = len(set(src + trg))
     idx = torch.LongTensor([src, trg])
@@ -57,41 +57,68 @@ def toTorchTensor_spMM(graph_path, gpu=False):
     print("#V:{}\t#E:{}".format(n_nodes, len(src)))
     return graph_coo, embed 
 
+def SAG_routine(G):
+    start = time.perf_counter()
+    vG = vgraph(G)
+    vG.make_vgraph()
+    vG.print_vgraph()
+    numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed = toTorchTensor(vG, args.gpu)
+    gcn = GCN(args.feature, args.hidden, args.classes)
+
+    if args.gpu:
+        gcn = gcn.cuda()
+        nodePointer = nodePointer.cuda()
+        groupNodePointer = groupNodePointer.cuda()
+        edgeList = edgeList.cuda()
+        embed = embed.cuda()
+
+    end1 = time.perf_counter()
+    gcn(numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed)
+    end2 = time.perf_counter()
+    overall = end2 - start
+    cpu_side = (end1 - start)/overall * 100
+    mode_side = (end2 - end1)/overall * 100
+    print("Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
+
+def SpMM_routine(G):
+    graph_coo, embed = toTorchTensor_spMM(G, args.gpu)
+    start = time.perf_counter()
+    gcn_spmm = GCN_spMM(args.feature, args.hidden, args.classes)
+    if args.gpu:
+        gcn_spmm = gcn_spmm.cuda()
+        graph_coo = graph_coo.cuda()
+        embed = embed.cuda()
+
+    end1 = time.perf_counter()
+    gcn_spmm(graph_coo, embed)
+
+    end2 = time.perf_counter()
+    overall = end2 - start
+    cpu_side = (end1 - start)/overall * 100
+    mode_side = (end2 - end1)/overall * 100
+    print("Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
 
 if __name__ == "__main__":
 
-    if args.kernel == "SAG":
-        start = time.perf_counter()
-        G = graph()
-        G.read_graph_files(args.graph_path)
-        # G.gen_graph_embedding(args.feature)
-        vG = vgraph(G)
-        vG.make_vgraph()
-        vG.print_vgraph()
-        numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed = toTorchTensor(vG, args.gpu)
-        gcn = GCN(args.feature, args.hidden, args.classes)
+    G = graph()
+    G.read_graph_files(args.graph_path)
+    G.kernel_choice()
 
-        if args.gpu:
-            gcn = gcn.cuda()
-            nodePointer = nodePointer.cuda()
-            groupNodePointer = groupNodePointer.cuda()
-            edgeList = edgeList.cuda()
-            embed = embed.cuda()
-
-        end1 = time.perf_counter()
-        gcn(numGroups, nodePointer, ebd_dim, numNodes, groupNodePointer, edgeList, embed)
-        end2 = time.perf_counter()
-        overall = end2 - start
-        cpu_side = (end1 - start)/overall * 100
-        mode_side = (end2 - end1)/overall * 100
-        print("Host, {:.2f}%, Model, {:.2}%".format(cpu_side, mode_side))
+    if args.kernel == 'auto':
+        print("AUTO Mode")
+        print("Select [ {} ] Kernel".format(G.kernel))
     else:
-        graph_coo, embed = toTorchTensor_spMM(args.graph_path, args.gpu)
-        gcn_spmm = GCN_spMM(args.feature, args.hidden, args.classes)
-        if args.gpu:
-            gcn_spmm = gcn_spmm.cuda()
-            graph_coo = graph_coo.cuda()
-            embed = embed.cuda()
+        print("Manual Mode")
+        print("User Specify [ {} ] Kernel".format(args.kernel))
 
-        gcn_spmm(graph_coo, embed)
-        
+    # if args.kernel == 'auto':
+    #     if G.kernel == "SAG":
+    #         SAG_routine(G)
+    #     else:
+    #         SpMM_routine(G)
+    # else:
+    #     if args.kernel == 'SAG':
+    #         SAG_routine(G)
+    #     else:
+    #         SpMM_routine(G)
+    print()

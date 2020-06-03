@@ -1,0 +1,4 @@
+Filename, Mem(ms), Compute(ms)
+citeseer.csv, 5.283525, 0.598913
+cora.csv, 1.671074, 0.373216
+pubmed.csv, 4.274981, 2.381122
