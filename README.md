@@ -55,7 +55,9 @@ UCSB CS263 Project for Spring 2020 Quarter
 ## Step-3
 ### Benchmark Mode -- Multiple Graphs 
 > * For running several graphs.
->>  **```./run-bench.py```** <br>
+>>  **```
+cd pytorch
+./run-bench.py```** <br>
 >>  ```overall```: **True** if profile overall CUDA kernel runtime(fast), otherwise, profile kernel detailed metrics (slow). <br>
 >> ```hidden```: dimension of GCN hidden layers.<br>
 >> ```data_dir```: absolute path for the graph directory ```default="/graphs/"```
