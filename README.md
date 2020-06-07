@@ -27,6 +27,10 @@ UCSB CS263 Project for Spring 2020 Quarter
 > + ```example-graphs/```: contains the initial surveys of this project. <br>
 
 
+## Step-0
+Install necessary CUDA driver and Nvidia-Docker2 for your environment.  
+Here is a sample guide: [link](https://cnvrg.io/how-to-setup-docker-and-nvidia-docker-2-0-on-ubuntu-18-04/)
+
 ## Step-1
 ### Start Docker
 > 1. ```cd pytorch/``` <br> 
@@ -40,7 +44,7 @@ UCSB CS263 Project for Spring 2020 Quarter
 
 > **Note:** 
 > + **Command 3 only need to run if ```cs263_project``` has not been built before. Ohterwise, if ```cs263_project``` docker image already exists, just jump from 2 to 4.**
-> + **Command 4: ```~/CS263-project``` and ```~/CS263-project/example-graphs/``` should be the absolute path**.
+> + **Command 4: ```~/CS263-project``` and ```~/CS263-project/example-graphs/``` might need to be updated to absolute path**.
 
 ## Step-2
 ### Standalone Mode -- Single Graph 
@@ -72,7 +76,7 @@ cd pytorch
 - [x] **5/29** Github Friday 5 pm week 9 (Empirical evaluation + presentation preparation week)
 - [x] **6/03**  6/3 in class presentation dates
 - [x] **6/05**  Github Friday 5 pm week 10 (Documentation and report week)
-- [ ] **6/08**  project report due
+- [x] **6/08**  project report due
 
 # Progress Logs
 * **4/24**: 
